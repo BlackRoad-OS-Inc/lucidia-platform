@@ -1,116 +1,41 @@
-# Lucidia Platform
+<div align="center">
 
-**The end of technical barriers. AI-powered learning that actually works.**
+<img src="https://images.blackroad.io/pixel-art/road-logo.png" alt="BlackRoad OS" width="80" />
 
-```
-Upload a problem → Get visual explanation → Actually understand it
-```
+# lucidia-platform
 
-## The Problem We Solve
+**Lucidia: AI-powered learning platform - the end of technical barriers**
 
-- **60% of parents** can't help with their children's homework
-- **40% of 4th graders** below basic reading level
-- **$124.5 billion** spent on tutoring globally - but EdTech doesn't work
-- Current tools: drill-and-practice that creates anxiety, not understanding
+[![BlackRoad OS](https://img.shields.io/badge/BlackRoad_OS-Pave_Tomorrow-FF2255?style=for-the-badge&labelColor=000000)](https://blackroad.io)
+[![License](https://img.shields.io/badge/License-Proprietary-FF6B2B?style=for-the-badge&labelColor=000000)](./LICENSE)
+[![Edge AI](https://img.shields.io/badge/Edge_AI-52_TOPS-00D4FF?style=for-the-badge&labelColor=000000)](https://github.com/BlackRoad-OS-Inc)
 
-## The Lucidia Difference
+</div>
 
-| Traditional EdTech | Lucidia |
-|-------------------|---------|
-| Shows answers | Builds understanding |
-| Text-heavy explanations | 3D visualizations |
-| One-size-fits-all | Adapts to learning style |
-| Forgets every session | Remembers your journey |
-| Separate tools for each subject | One platform, all subjects |
+<div align="center">
+<sub>Part of the <a href="https://blackroad.io">BlackRoad OS</a> ecosystem — sovereign edge AI infrastructure</sub>
+</div>
 
-## How It Works
+---
 
-1. **Upload** - Photo, voice, or text - however you communicate best
-2. **Understand** - AI generates personalized visual explanations
-3. **Practice** - Contextual problems in game-like scenarios
-4. **Master** - Build conceptual understanding, not just procedures
+## Overview
 
-## Quick Start
-
-```bash
-# Clone and install
-git clone https://github.com/BlackRoad-OS/lucidia-platform
-cd lucidia-platform
-
-# Start the API
-cd api && pip install -e . && uvicorn main:app --reload
-
-# Start the web app (separate terminal)
-cd web && npm install && npm run dev
-```
-
-## Architecture
-
-```
-lucidia-platform/
-├── api/                    # FastAPI backend
-│   ├── routers/           # API endpoints
-│   │   ├── problems.py    # Problem upload & analysis
-│   │   ├── explanations.py # AI-generated explanations
-│   │   ├── visualizations.py # 3D/2D visualization generation
-│   │   └── users.py       # Auth & user management
-│   ├── services/          # Business logic
-│   │   ├── ai_tutor.py    # Core tutoring engine
-│   │   ├── memory.py      # Persistent user context
-│   │   └── visualizer.py  # Visual content generation
-│   └── main.py            # FastAPI app
-├── web/                    # Next.js frontend
-│   ├── app/               # App router pages
-│   ├── components/        # React components
-│   └── lib/               # Utilities
-├── packages/              # Shared packages
-│   └── lucidia-core/      # Core reasoning engines
-└── deploy/                # Infrastructure
-    ├── railway.toml
-    └── Dockerfile
-```
-
-## Pricing
-
-| Plan | Price | Features |
-|------|-------|----------|
-| **Free** | $0 | 10 problems/month, basic explanations |
-| **Student** | $9.99/mo | Unlimited problems, visual explanations, memory |
-| **Family** | $19.99/mo | Up to 5 users, progress tracking, parent dashboard |
-| **School** | $3-8/student/yr | Admin controls, LMS integration, analytics |
-
-## Powered By
-
-Built on the BlackRoad OS stack:
-- [lucidia-core](https://github.com/BlackRoad-OS/lucidia-core) - AI reasoning engines
-- [lucidia-math](https://github.com/BlackRoad-OS/lucidia-math) - Mathematical computation
-- [blackroad-agents](https://github.com/BlackRoad-OS/blackroad-agents) - Agent orchestration
+Lucidia: AI-powered learning platform - the end of technical barriers
 
 ## License
 
-MIT - See [LICENSE](LICENSE) for details.
+**Proprietary** — Copyright © 2024–2026 [BlackRoad OS, Inc.](https://blackroad.io) All rights reserved.
+
+Founder & CEO: **Alexa Louise Amundson** · Delaware C-Corp
+
+See [LICENSE](./LICENSE) for full terms.
 
 ---
 
-**Ready to transform learning?** Visit [lucidia.ai](https://lucidia.ai)
+<div align="center">
 
-Built by [BlackRoad OS](https://blackroad.io)
+**BlackRoad OS — Pave Tomorrow.**
 
----
+[blackroad.io](https://blackroad.io) · [GitHub](https://github.com/BlackRoad-OS-Inc) · [Brand](https://brand.blackroad.io)
 
-## 📜 License & Copyright
-
-**Copyright © 2026 BlackRoad OS, Inc. All Rights Reserved.**
-
-**CEO:** Alexa Amundson | **PROPRIETARY AND CONFIDENTIAL**
-
-This software is NOT for commercial resale. Testing purposes only.
-
-### 🏢 Enterprise Scale:
-- 30,000 AI Agents
-- 30,000 Human Employees
-- CEO: Alexa Amundson
-
-**Contact:** blackroad.systems@gmail.com
-
-See [LICENSE](LICENSE) for complete terms.
+</div>
