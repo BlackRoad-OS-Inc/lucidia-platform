@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pricing — Lucidia AI Creator Platform | BlackRoad OS</title>
+  <meta name="description" content="Simple pricing for Lucidia. Free tier with 100 requests/day, Pro at $20/mo unlimited, Enterprise at $99/mo with self-hosted option." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #000000;
+      --bg-card: #0a0a0a;
+      --border: #1a1a1a;
+      --border-hover: #2a2a2a;
+      --text: #e0e0e0;
+      --text-muted: #888888;
+      --text-bright: #ffffff;
+      --g: linear-gradient(90deg, #FF6B2B, #FF2255, #CC00AA, #8844FF, #4488FF, #00D4FF);
+      --g-text: linear-gradient(90deg, #FF6B2B, #FF2255, #CC00AA, #8844FF, #4488FF, #00D4FF);
+      --orange: #FF6B2B;
+      --pink: #FF2255;
+      --magenta: #CC00AA;
+      --violet: #8844FF;
+      --blue: #4488FF;
+      --cyan: #00D4FF;
+      --success: #22c55e;
+      --warning: #f59e0b;
+      --font-heading: 'Space Grotesk', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+      --font-body: 'Space Grotesk', system-ui, sans-serif;
+      --radius: 12px;
+      --radius-sm: 8px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-heading);
+      color: var(--text-bright);
+      line-height: 1.2;
+    }
+
+    .gradient-text {
+      background: var(--g-text);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    a { color: var(--cyan); text-decoration: none; }
+    a:hover { color: var(--blue); }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      border: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--g); color: #000; }
+    .btn-secondary { background: transparent; color: var(--text-bright); border: 1px solid var(--border); }
+    .btn-secondary:hover { border-color: var(--border-hover); color: var(--text-bright); }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      font-family: var(--font-mono);
+      border: 1px solid transparent;
+      background: linear-gradient(var(--bg-card), var(--bg-card)) padding-box,
+                  var(--g) border-box;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      transition: border-color 0.3s;
+    }
+
+    .card:hover { border-color: var(--border-hover); }
+
+    /* ---- Nav ---- */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 16px 0;
+      background: rgba(0, 0, 0, 0.9);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text-bright);
+    }
+
+    .nav-logo-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--g);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      color: #000;
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover { color: var(--text-bright); }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-muted);
+      padding: 10px 20px;
+      border: none;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn-ghost:hover { color: var(--text-bright); }
+
+    /* ---- Hero ---- */
+    .pricing-hero {
+      padding: 160px 0 80px;
+      text-align: center;
+    }
+
+    .pricing-hero h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .pricing-hero p {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ---- Toggle ---- */
+    .billing-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin: 40px 0;
+    }
+
+    .billing-toggle span {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .billing-toggle span.active {
+      color: var(--text-bright);
+      font-weight: 600;
+    }
+
+    .toggle-switch {
+      width: 48px;
+      height: 26px;
+      border-radius: 13px;
+      background: var(--border);
+      position: relative;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .toggle-switch.annual { background: var(--violet); }
+
+    .toggle-switch::after {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--text-bright);
+      transition: transform 0.3s;
+    }
+
+    .toggle-switch.annual::after {
+      transform: translateX(22px);
+    }
+
+    .save-badge {
+      font-size: 0.7rem;
+      font-family: var(--font-mono);
+      color: var(--success);
+      background: rgba(34,197,94,0.1);
+      padding: 4px 10px;
+      border-radius: 100px;
+    }
+
+    /* ---- Pricing Cards ---- */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1080px;
+      margin: 0 auto 80px;
+    }
+
+    .pricing-card {
+      padding: 48px 36px;
+      text-align: center;
+      position: relative;
+    }
+
+    .pricing-card.featured {
+      border-color: var(--violet);
+      box-shadow: 0 0 60px rgba(136, 68, 255, 0.1);
+    }
+
+    .pricing-card.featured::before {
+      content: 'MOST POPULAR';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 4px 16px;
+      background: var(--g);
+      color: #000;
+      font-size: 0.7rem;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      border-radius: 100px;
+      letter-spacing: 0.05em;
+    }
+
+    .pricing-tier-name {
+      font-size: 0.85rem;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
+    }
+
+    .pricing-price {
+      font-size: 4rem;
+      font-weight: 700;
+      color: var(--text-bright);
+      margin-bottom: 4px;
+      line-height: 1;
+    }
+
+    .pricing-price span {
+      font-size: 1rem;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .pricing-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 32px;
+      min-height: 48px;
+    }
+
+    .pricing-features {
+      list-style: none;
+      text-align: left;
+      margin-bottom: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .pricing-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    .pricing-features li .icon {
+      color: var(--success);
+      font-size: 0.85rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .pricing-features li.disabled {
+      color: var(--text-muted);
+    }
+
+    .pricing-features li.disabled .icon {
+      color: var(--text-muted);
+      opacity: 0.3;
+    }
+
+    .pricing-card .btn {
+      width: 100%;
+      justify-content: center;
+    }
+
+    /* ---- Comparison Table ---- */
+    .comparison-section {
+      padding: 80px 0;
+    }
+
+    .comparison-section h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .comparison-table thead th {
+      padding: 16px 20px;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .comparison-table thead th:first-child {
+      text-align: left;
+    }
+
+    .comparison-table tbody td {
+      padding: 14px 20px;
+      font-size: 0.9rem;
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+      color: var(--text);
+    }
+
+    .comparison-table tbody td:first-child {
+      text-align: left;
+      color: var(--text-bright);
+      font-weight: 500;
+    }
+
+    .comparison-table tbody tr:hover {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .comparison-table .check-icon {
+      color: var(--success);
+    }
+
+    .comparison-table .cross-icon {
+      color: var(--text-muted);
+      opacity: 0.3;
+    }
+
+    .comparison-table .category-row td {
+      padding-top: 28px;
+      font-size: 0.75rem;
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ---- FAQ ---- */
+    .faq-section {
+      padding: 80px 0 120px;
+    }
+
+    .faq-section h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      padding: 28px;
+    }
+
+    .faq-item h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: var(--text-bright);
+    }
+
+    .faq-item p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ---- CTA ---- */
+    .cta-section {
+      padding: 80px 0;
+      text-align: center;
+    }
+
+    .cta-box {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 48px;
+      position: relative;
+      background: var(--bg-card);
+      border-radius: var(--radius);
+    }
+
+    .cta-box::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: var(--radius);
+      padding: 1px;
+      background: var(--g);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0.4;
+    }
+
+    .cta-box h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .cta-box p {
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    /* ---- Footer ---- */
+    .footer {
+      padding: 48px 0 32px;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .footer-content a {
+      color: var(--text-muted);
+    }
+
+    .footer-content a:hover {
+      color: var(--text-bright);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 1024px) {
+      .pricing-hero h1 { font-size: 2.5rem; }
+    }
+
+    @media (max-width: 768px) {
+      .pricing-grid { grid-template-columns: 1fr; max-width: 400px; }
+      .faq-grid { grid-template-columns: 1fr; }
+      .comparison-table { font-size: 0.8rem; }
+      .comparison-table thead th,
+      .comparison-table tbody td { padding: 10px 8px; }
+      .nav-links { display: none; }
+      .pricing-hero h1 { font-size: 2rem; }
+    }
+
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="nav">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon">L</div>
+        Lucidia
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html#features">Features</a></li>
+        <li><a href="index.html#agents">Agents</a></li>
+        <li><a href="index.html#memory">Memory</a></li>
+        <li><a href="#" style="color: var(--text-bright);">Pricing</a></li>
+        <li><a href="https://docs.lucidia.ai">Docs</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="#" class="btn-ghost">Sign In</a>
+        <a href="#" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.9rem;">Get Started</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="pricing-hero">
+    <div class="container">
+      <span class="badge" style="margin-bottom: 24px;">PRICING</span>
+      <h1>Simple, <span class="gradient-text">Transparent</span> Pricing</h1>
+      <p>Start free. Scale to unlimited. No per-token billing, no hidden fees, no surprises. Pay for the plan, not the prompt.</p>
+
+      <div class="billing-toggle">
+        <span class="active" id="monthly-label">Monthly</span>
+        <div class="toggle-switch" id="billing-toggle" onclick="toggleBilling()"></div>
+        <span id="annual-label">Annual</span>
+        <span class="save-badge">Save 20%</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Cards -->
+  <section>
+    <div class="container">
+      <div class="pricing-grid">
+        <!-- Free -->
+        <div class="card pricing-card">
+          <div class="pricing-tier-name">Free</div>
+          <div class="pricing-price">$0 <span>/mo</span></div>
+          <div class="pricing-desc">Try Lucidia with 100 requests per day. No credit card required.</div>
+          <ul class="pricing-features">
+            <li><span class="icon">&#10003;</span> 100 requests per day</li>
+            <li><span class="icon">&#10003;</span> 3 active projects</li>
+            <li><span class="icon">&#10003;</span> Basic memory (30-day retention)</li>
+            <li><span class="icon">&#10003;</span> 2 cognitive agents (Curator + Analyzer)</li>
+            <li><span class="icon">&#10003;</span> Standard code execution</li>
+            <li><span class="icon">&#10003;</span> Community Discord support</li>
+            <li class="disabled"><span class="icon">&#10007;</span> Ghost Mode</li>
+            <li class="disabled"><span class="icon">&#10007;</span> One-click deploy</li>
+            <li class="disabled"><span class="icon">&#10007;</span> Visual Intention Engine</li>
+          </ul>
+          <a href="#" class="btn btn-secondary">Get Started Free</a>
+        </div>
+
+        <!-- Pro -->
+        <div class="card pricing-card featured">
+          <div class="pricing-tier-name">Pro</div>
+          <div class="pricing-price" id="pro-price">$20 <span>/mo</span></div>
+          <div class="pricing-desc">Unlimited everything. The full Lucidia experience for individual builders.</div>
+          <ul class="pricing-features">
+            <li><span class="icon">&#10003;</span> <strong>Unlimited</strong> requests</li>
+            <li><span class="icon">&#10003;</span> <strong>Unlimited</strong> active projects</li>
+            <li><span class="icon">&#10003;</span> <strong>Infinite</strong> memory (never expires)</li>
+            <li><span class="icon">&#10003;</span> All <strong>6 cognitive agents</strong></li>
+            <li><span class="icon">&#10003;</span> <strong>Ghost Mode</strong> — autonomous background work</li>
+            <li><span class="icon">&#10003;</span> <strong>One-click deploy</strong> to edge</li>
+            <li><span class="icon">&#10003;</span> Visual Intention Engine</li>
+            <li><span class="icon">&#10003;</span> Priority code execution</li>
+            <li><span class="icon">&#10003;</span> Email support (24h response)</li>
+          </ul>
+          <a href="#" class="btn btn-primary">Start Pro — 14-Day Free Trial</a>
+        </div>
+
+        <!-- Enterprise -->
+        <div class="card pricing-card">
+          <div class="pricing-tier-name">Enterprise</div>
+          <div class="pricing-price" id="ent-price">$99 <span>/mo</span></div>
+          <div class="pricing-desc">Sovereign deployment with team collaboration and dedicated support.</div>
+          <ul class="pricing-features">
+            <li><span class="icon">&#10003;</span> Everything in Pro</li>
+            <li><span class="icon">&#10003;</span> <strong>Self-hosted</strong> deployment option</li>
+            <li><span class="icon">&#10003;</span> <strong>10 team seats</strong> included</li>
+            <li><span class="icon">&#10003;</span> Custom cognitive agents</li>
+            <li><span class="icon">&#10003;</span> SOC2 Type II compliance</li>
+            <li><span class="icon">&#10003;</span> Dedicated infrastructure</li>
+            <li><span class="icon">&#10003;</span> 99.9% SLA guarantee</li>
+            <li><span class="icon">&#10003;</span> RoundTrip multi-agent coordination</li>
+            <li><span class="icon">&#10003;</span> Dedicated support engineer</li>
+          </ul>
+          <a href="#" class="btn btn-secondary">Contact Sales</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature Comparison -->
+  <section class="comparison-section">
+    <div class="container">
+      <h2>Feature Comparison</h2>
+
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Free</th>
+            <th>Pro — $20/mo</th>
+            <th>Enterprise — $99/mo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Core -->
+          <tr class="category-row">
+            <td colspan="4">Core Platform</td>
+          </tr>
+          <tr>
+            <td>Daily Requests</td>
+            <td>100</td>
+            <td>Unlimited</td>
+            <td>Unlimited</td>
+          </tr>
+          <tr>
+            <td>Active Projects</td>
+            <td>3</td>
+            <td>Unlimited</td>
+            <td>Unlimited</td>
+          </tr>
+          <tr>
+            <td>Code Execution</td>
+            <td>Standard</td>
+            <td>Priority</td>
+            <td>Dedicated</td>
+          </tr>
+          <tr>
+            <td>File Uploads</td>
+            <td>10 MB</td>
+            <td>500 MB</td>
+            <td>10 GB</td>
+          </tr>
+
+          <!-- Memory -->
+          <tr class="category-row">
+            <td colspan="4">Memory Engine</td>
+          </tr>
+          <tr>
+            <td>Memory Retention</td>
+            <td>30 days</td>
+            <td>Infinite</td>
+            <td>Infinite</td>
+          </tr>
+          <tr>
+            <td>Cross-project Memory</td>
+            <td class="cross-icon">&#10007;</td>
+            <td class="check-icon">&#10003;</td>
+            <td class="check-icon">&#10003;</td>
+          </tr>
+          <tr>
+            <td>Memory Graph Visualization</td>
+            <td class="cross-icon">&#10007;</td>
+            <td class="check-icon">&#10003;</td>
+            <td class="check-icon">&#10003;</td>
+          </tr>
+          <tr>
+            <td>Memory Export</td>
+            <td class="cross-icon">&#10007;</td>
+            <td class="check-icon">&#10003;</td>
+            <td class="check-icon">&#10003;</td>
+          </tr>
+
+          <!-- Agents -->
+          <tr class="category-row">
+            <td colspan="4">Cognitive Agents</td>
+          </tr>
+          <tr>
+            <td>Available Agents</td>
+            <td>2 (Curator, Analyzer)</td>
+            <td>All 6</td>
+            <td>All 6 + Custom</td>
+          </tr>
+          <tr>
+            <td>Ghost Mode</td>
+            <td class="cross-icon">&#10007;</td>
+            <td class="check-icon">&#10003;</td>
+            <td class="check-icon">&#10003;</td>
+          </tr>
+          <tr>
+            <td>Visual Intention Engine</td>
+            <td class="cross-icon">&#10007;</td>
+            <td class="check-icon">&#10003;</td>
+            <td class="check-icon">&#10003;</td>
+          </tr>
+          <tr>
+            <td>Custom Agent Configuration</td>
+            <td class="cross-icon">&#10007;</td>
+            <td class="cross-icon">&#10007;</td>
+            <td class="check-icon">&#10003;</td>
+          </tr>
+
+          <!-- Deploy -->
+          <tr class="category-row">
+            <td colspan="4">Deployment</td>
+          </tr>
+          <tr>
+            <td>One-Click Deploy</td>
+            <td class="cross-icon">&#10007;</td>
+            <td class="check-icon">&#10003;</td>
+            <td class="check-icon">&#10003;</td>
+          </tr>
+          <tr>
+            <td>Custom Domains</td>
+            <td class="cross-icon">&#10007;</td>
+            <td>3</td>
+            <td>Unlimited</td>
+          </tr>
+          <tr>
+            <td>Edge Workers</td>
+            <td class="cross-icon">&#10007;</td>
+            <td class="check-icon">&#10003;</td>
+            <td class="check-icon">&#10003;</td>
+          </tr>
+          <tr>
+            <td>Self-Hosted Option</td>
+            <td class="cross-icon">&#10007;</td>
+            <td class="cross-icon">&#10007;</td>
+            <td class="check-icon">&#10003;</td>
+          </tr>
+
+          <!-- Team -->
+          <tr class="category-row">
+            <td colspan="4">Team &amp; Support</td>
+          </tr>
+          <tr>
+            <td>Team Seats</td>
+            <td>1</td>
+            <td>1</td>
+            <td>10 included</td>
+          </tr>
+          <tr>
+            <td>RoundTrip Coordination</td>
+            <td class="cross-icon">&#10007;</td>
+            <td class="cross-icon">&#10007;</td>
+            <td class="check-icon">&#10003;</td>
+          </tr>
+          <tr>
+            <td>SOC2 Compliance</td>
+            <td class="cross-icon">&#10007;</td>
+            <td class="cross-icon">&#10007;</td>
+            <td class="check-icon">&#10003;</td>
+          </tr>
+          <tr>
+            <td>SLA Guarantee</td>
+            <td>None</td>
+            <td>99%</td>
+            <td>99.9%</td>
+          </tr>
+          <tr>
+            <td>Support</td>
+            <td>Community</td>
+            <td>Email (24h)</td>
+            <td>Dedicated Engineer</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-grid">
+        <div class="card faq-item">
+          <h3>What counts as a "request"?</h3>
+          <p>A request is any interaction with Lucidia's AI — a chat message, code execution, memory query, or agent task. Ghost Mode tasks each count as one request regardless of how many sub-tasks the agents perform internally.</p>
+        </div>
+
+        <div class="card faq-item">
+          <h3>Can I switch plans at any time?</h3>
+          <p>Yes. Upgrade or downgrade at any time. When upgrading, you get immediate access to new features. When downgrading, your current billing period remains active until it expires. Memory is preserved.</p>
+        </div>
+
+        <div class="card faq-item">
+          <h3>What happens to my memory if I downgrade?</h3>
+          <p>Your memory data is always yours. On the Free plan, memory older than 30 days becomes read-only (you can still search it, but new connections are not formed). Upgrading re-activates full memory.</p>
+        </div>
+
+        <div class="card faq-item">
+          <h3>How does the self-hosted option work?</h3>
+          <p>Enterprise customers can deploy Lucidia on their own infrastructure — bare metal, VMs, or Kubernetes. We provide Docker images, Helm charts, and deployment scripts. Your data never leaves your network.</p>
+        </div>
+
+        <div class="card faq-item">
+          <h3>Is there a free trial for Pro?</h3>
+          <p>Yes. Pro comes with a 14-day free trial with full access to all features. No credit card required to start. You will be prompted to add payment only when the trial ends.</p>
+        </div>
+
+        <div class="card faq-item">
+          <h3>What AI models does Lucidia use?</h3>
+          <p>Lucidia runs on BlackRoad's sovereign edge AI infrastructure — 52 TOPS across 5 nodes with local-first inference. We use a mix of open-weight models optimized for code generation, analysis, and reasoning. No data is sent to third-party model providers.</p>
+        </div>
+
+        <div class="card faq-item">
+          <h3>Do you offer annual pricing?</h3>
+          <p>Yes. Annual billing saves 20% — Pro drops to $16/mo and Enterprise to $79/mo. Toggle the billing switch above to see annual prices.</p>
+        </div>
+
+        <div class="card faq-item">
+          <h3>Can I add more team seats to Enterprise?</h3>
+          <p>Enterprise includes 10 seats. Additional seats are $9/mo each. For teams larger than 50, contact us for volume pricing and custom deployment options.</p>
+        </div>
+
+        <div class="card faq-item">
+          <h3>What payment methods do you accept?</h3>
+          <p>We use Stripe for payment processing. All major credit cards, debit cards, and ACH bank transfers are accepted. Enterprise customers can also pay by invoice with NET-30 terms.</p>
+        </div>
+
+        <div class="card faq-item">
+          <h3>Is my code and data secure?</h3>
+          <p>Absolutely. All data is encrypted at rest (AES-256) and in transit (TLS 1.3). Enterprise customers can self-host for complete control. We never train on your data or share it with third parties. SOC2 Type II certification is available for Enterprise.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-box">
+        <h2>Start Building with <span class="gradient-text">Lucidia</span></h2>
+        <p>100 requests per day, free forever. No credit card required.</p>
+        <div style="display: flex; gap: 12px; justify-content: center;">
+          <a href="#" class="btn btn-primary">Get Started Free</a>
+          <a href="index.html#demo" class="btn btn-secondary">Watch Demo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <span>&copy; 2024&ndash;2026 BlackRoad OS, Inc. All rights reserved.</span>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="app.html">Dashboard</a>
+          <a href="/privacy">Privacy</a>
+          <a href="/terms">Terms</a>
+          <a href="https://blackroad.io">BlackRoad OS</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    let isAnnual = false;
+
+    function toggleBilling() {
+      isAnnual = !isAnnual;
+      const toggle = document.getElementById('billing-toggle');
+      const monthlyLabel = document.getElementById('monthly-label');
+      const annualLabel = document.getElementById('annual-label');
+      const proPrice = document.getElementById('pro-price');
+      const entPrice = document.getElementById('ent-price');
+
+      if (isAnnual) {
+        toggle.classList.add('annual');
+        monthlyLabel.classList.remove('active');
+        annualLabel.classList.add('active');
+        proPrice.innerHTML = '$16 <span>/mo</span>';
+        entPrice.innerHTML = '$79 <span>/mo</span>';
+      } else {
+        toggle.classList.remove('annual');
+        monthlyLabel.classList.add('active');
+        annualLabel.classList.remove('active');
+        proPrice.innerHTML = '$20 <span>/mo</span>';
+        entPrice.innerHTML = '$99 <span>/mo</span>';
+      }
+    }
+  </script>
+
+</body>
+</html>

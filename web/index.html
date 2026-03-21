@@ -1,0 +1,1979 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lucidia — The AI That Remembers | BlackRoad OS</title>
+  <meta name="description" content="Lucidia is the AI creator platform that remembers everything. Infinite project memory, live code execution, 6 cognitive agents, one-click deploy. $20/mo unlimited." />
+  <meta name="keywords" content="AI, creator platform, code assistant, memory, BlackRoad OS, Lucidia" />
+  <meta property="og:title" content="Lucidia — The AI That Remembers" />
+  <meta property="og:description" content="AI creator platform with infinite memory, live execution, and 6 cognitive agents." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://lucidia.ai" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ============================================================
+       LUCIDIA PLATFORM — BLACKROAD DESIGN SYSTEM
+       BlackRoad OS, Inc. — Proprietary
+       ============================================================ */
+
+    :root {
+      --bg: #000000;
+      --bg-card: #0a0a0a;
+      --border: #1a1a1a;
+      --border-hover: #2a2a2a;
+      --text: #e0e0e0;
+      --text-muted: #888888;
+      --text-bright: #ffffff;
+      --g: linear-gradient(90deg, #FF6B2B, #FF2255, #CC00AA, #8844FF, #4488FF, #00D4FF);
+      --g-45: linear-gradient(135deg, #FF6B2B, #FF2255, #CC00AA, #8844FF, #4488FF, #00D4FF);
+      --g-text: linear-gradient(90deg, #FF6B2B, #FF2255, #CC00AA, #8844FF, #4488FF, #00D4FF);
+      --orange: #FF6B2B;
+      --pink: #FF2255;
+      --magenta: #CC00AA;
+      --violet: #8844FF;
+      --blue: #4488FF;
+      --cyan: #00D4FF;
+      --success: #22c55e;
+      --warning: #f59e0b;
+      --font-heading: 'Space Grotesk', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+      --font-body: 'Space Grotesk', system-ui, sans-serif;
+      --radius: 12px;
+      --radius-sm: 8px;
+      --radius-lg: 20px;
+      --shadow-glow: 0 0 40px rgba(136, 68, 255, 0.15);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ---- Typography ---- */
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-heading);
+      color: var(--text-bright);
+      line-height: 1.2;
+    }
+
+    .gradient-text {
+      background: var(--g-text);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    code, .mono {
+      font-family: var(--font-mono);
+    }
+
+    a {
+      color: var(--cyan);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    a:hover {
+      color: var(--blue);
+    }
+
+    /* ---- Layout ---- */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section {
+      padding: 100px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .section-header h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .section-header p {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    /* ---- Card System ---- */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      border-color: var(--border-hover);
+      box-shadow: var(--shadow-glow);
+    }
+
+    .card-gradient-border {
+      position: relative;
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      padding: 32px;
+    }
+
+    .card-gradient-border::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: var(--radius);
+      padding: 1px;
+      background: var(--g);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0.4;
+      transition: opacity 0.3s;
+    }
+
+    .card-gradient-border:hover::before {
+      opacity: 0.8;
+    }
+
+    /* ---- Grid System ---- */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    /* ---- Buttons ---- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      border: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    .btn-primary {
+      background: var(--g);
+      color: #000;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-bright);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--border-hover);
+      color: var(--text-bright);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-muted);
+      padding: 10px 20px;
+    }
+
+    .btn-ghost:hover {
+      color: var(--text-bright);
+    }
+
+    /* ---- Badge ---- */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      font-family: var(--font-mono);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+
+    .badge-gradient {
+      border-color: transparent;
+      background: linear-gradient(var(--bg-card), var(--bg-card)) padding-box,
+                  var(--g) border-box;
+      border: 1px solid transparent;
+    }
+
+    .badge .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--success);
+      animation: pulse-dot 2s infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    /* ---- Divider ---- */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .divider-gradient {
+      height: 1px;
+      background: var(--g);
+      opacity: 0.3;
+    }
+
+    /* ============================================================
+       NAVIGATION
+       ============================================================ */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 16px 0;
+      background: rgba(0, 0, 0, 0.85);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text-bright);
+    }
+
+    .nav-logo-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--g);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      color: #000;
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-bright);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* ============================================================
+       HERO SECTION
+       ============================================================ */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(136, 68, 255, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -100px;
+      right: -200px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(0, 212, 255, 0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+    }
+
+    .hero-badge {
+      margin-bottom: 32px;
+    }
+
+    .hero h1 {
+      font-size: 4.5rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-subtitle {
+      font-size: 1.35rem;
+      color: var(--text-muted);
+      max-width: 640px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      margin-bottom: 48px;
+    }
+
+    .hero-metrics {
+      display: flex;
+      gap: 48px;
+      justify-content: center;
+      padding-top: 48px;
+      border-top: 1px solid var(--border);
+    }
+
+    .hero-metric {
+      text-align: center;
+    }
+
+    .hero-metric-value {
+      font-size: 2rem;
+      font-weight: 700;
+      font-family: var(--font-mono);
+    }
+
+    .hero-metric-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* ============================================================
+       FEATURES SECTION
+       ============================================================ */
+    .features-section {
+      padding: 120px 0;
+    }
+
+    .feature-card {
+      padding: 40px 32px;
+    }
+
+    .feature-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+    }
+
+    .feature-card h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .feature-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .feature-tag {
+      margin-top: 16px;
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-family: var(--font-mono);
+      background: rgba(136, 68, 255, 0.1);
+      color: var(--violet);
+      border: 1px solid rgba(136, 68, 255, 0.2);
+    }
+
+    /* ============================================================
+       HOW IT WORKS
+       ============================================================ */
+    .how-it-works {
+      padding: 120px 0;
+      background: linear-gradient(180deg, transparent, rgba(10, 10, 10, 0.5), transparent);
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      background: var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .step-card {
+      background: var(--bg);
+      padding: 40px 28px;
+      text-align: center;
+      position: relative;
+    }
+
+    .step-number {
+      font-family: var(--font-mono);
+      font-size: 3rem;
+      font-weight: 700;
+      background: var(--g-text);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 16px;
+    }
+
+    .step-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .step-card p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    /* ============================================================
+       COGNITIVE AGENTS
+       ============================================================ */
+    .agents-section {
+      padding: 120px 0;
+    }
+
+    .agent-card {
+      padding: 36px 28px;
+      text-align: center;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .agent-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .agent-avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      border: 2px solid var(--border);
+      transition: border-color 0.3s;
+    }
+
+    .agent-card:hover .agent-avatar {
+      border-color: var(--violet);
+    }
+
+    .agent-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .agent-role {
+      font-size: 0.8rem;
+      font-family: var(--font-mono);
+      color: var(--cyan);
+      margin-bottom: 12px;
+    }
+
+    .agent-card p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .agent-status {
+      margin-top: 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      font-family: var(--font-mono);
+      color: var(--success);
+    }
+
+    .agent-status .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--success);
+      animation: pulse-dot 2s infinite;
+    }
+
+    /* ============================================================
+       CODE DEMO SECTION
+       ============================================================ */
+    .demo-section {
+      padding: 120px 0;
+      background: linear-gradient(180deg, transparent, rgba(10, 10, 10, 0.5), transparent);
+    }
+
+    .demo-window {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .demo-titlebar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(10, 10, 10, 0.8);
+    }
+
+    .demo-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--border-hover);
+    }
+
+    .demo-dot.red { background: #ff5f56; }
+    .demo-dot.yellow { background: #ffbd2e; }
+    .demo-dot.green { background: #27c93f; }
+
+    .demo-titlebar span {
+      margin-left: 12px;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .demo-body {
+      padding: 28px;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      line-height: 1.8;
+      color: var(--text-muted);
+      min-height: 280px;
+    }
+
+    .demo-line {
+      margin-bottom: 4px;
+    }
+
+    .demo-prompt {
+      color: var(--cyan);
+    }
+
+    .demo-comment {
+      color: #555;
+    }
+
+    .demo-keyword {
+      color: var(--violet);
+    }
+
+    .demo-string {
+      color: var(--success);
+    }
+
+    .demo-function {
+      color: var(--orange);
+    }
+
+    .demo-cursor {
+      display: inline-block;
+      width: 8px;
+      height: 16px;
+      background: var(--cyan);
+      animation: blink 1s infinite;
+      vertical-align: middle;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    /* ============================================================
+       MEMORY SHOWCASE
+       ============================================================ */
+    .memory-section {
+      padding: 120px 0;
+    }
+
+    .memory-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .memory-text h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .memory-text p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .memory-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .memory-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      color: var(--text);
+      font-size: 0.95rem;
+    }
+
+    .memory-features li .check {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(34, 197, 94, 0.1);
+      color: var(--success);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .memory-visual {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+    }
+
+    .memory-node {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 18px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      margin-bottom: 12px;
+      transition: border-color 0.2s;
+    }
+
+    .memory-node:hover {
+      border-color: var(--border-hover);
+    }
+
+    .memory-node-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .memory-node-text {
+      flex: 1;
+    }
+
+    .memory-node-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-bright);
+    }
+
+    .memory-node-detail {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    .memory-node-time {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    /* ============================================================
+       PRICING SECTION
+       ============================================================ */
+    .pricing-section {
+      padding: 120px 0;
+      background: linear-gradient(180deg, transparent, rgba(10, 10, 10, 0.5), transparent);
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .pricing-card {
+      padding: 40px 32px;
+      text-align: center;
+    }
+
+    .pricing-card.featured {
+      position: relative;
+      border-color: var(--violet);
+    }
+
+    .pricing-card.featured::before {
+      content: 'MOST POPULAR';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 4px 16px;
+      background: var(--g);
+      color: #000;
+      font-size: 0.7rem;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      border-radius: 100px;
+      letter-spacing: 0.05em;
+    }
+
+    .pricing-tier {
+      font-size: 0.85rem;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
+    }
+
+    .pricing-price {
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: var(--text-bright);
+      margin-bottom: 4px;
+    }
+
+    .pricing-price span {
+      font-size: 1rem;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .pricing-description {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 32px;
+    }
+
+    .pricing-features {
+      list-style: none;
+      text-align: left;
+      margin-bottom: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .pricing-features li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    .pricing-features li .icon {
+      color: var(--success);
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+
+    .pricing-card .btn {
+      width: 100%;
+      justify-content: center;
+    }
+
+    /* ============================================================
+       INTEGRATION / ROUNDTRIP WIDGET
+       ============================================================ */
+    .roundtrip-section {
+      padding: 120px 0;
+    }
+
+    .roundtrip-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .roundtrip-widget {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .roundtrip-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .roundtrip-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-bright);
+    }
+
+    .roundtrip-online {
+      font-size: 0.75rem;
+      font-family: var(--font-mono);
+      color: var(--success);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .roundtrip-messages {
+      padding: 20px;
+      min-height: 240px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .rt-message {
+      display: flex;
+      gap: 10px;
+    }
+
+    .rt-avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      flex-shrink: 0;
+      border: 1px solid var(--border);
+    }
+
+    .rt-bubble {
+      background: rgba(26, 26, 26, 0.8);
+      border: 1px solid var(--border);
+      border-radius: 12px 12px 12px 4px;
+      padding: 10px 14px;
+      font-size: 0.85rem;
+      color: var(--text);
+      max-width: 320px;
+    }
+
+    .rt-name {
+      font-size: 0.7rem;
+      font-weight: 600;
+      font-family: var(--font-mono);
+      margin-bottom: 4px;
+    }
+
+    .roundtrip-input {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 20px;
+      border-top: 1px solid var(--border);
+    }
+
+    .roundtrip-input input {
+      flex: 1;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      outline: none;
+    }
+
+    .roundtrip-input input:focus {
+      border-color: var(--violet);
+    }
+
+    .roundtrip-input button {
+      background: var(--g);
+      color: #000;
+      border: none;
+      padding: 10px 18px;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+
+    /* ============================================================
+       TESTIMONIALS / SOCIAL PROOF
+       ============================================================ */
+    .social-proof {
+      padding: 80px 0;
+      text-align: center;
+    }
+
+    .logos-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 48px;
+      opacity: 0.4;
+      margin-bottom: 48px;
+    }
+
+    .logos-row span {
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .testimonial-card {
+      padding: 28px;
+      text-align: left;
+    }
+
+    .testimonial-text {
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.6;
+      margin-bottom: 16px;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-bright);
+    }
+
+    .testimonial-role {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* ============================================================
+       CTA SECTION
+       ============================================================ */
+    .cta-section {
+      padding: 120px 0;
+      text-align: center;
+    }
+
+    .cta-box {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 64px 48px;
+    }
+
+    .cta-box h2 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .cta-box p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      margin-bottom: 32px;
+    }
+
+    .cta-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+    }
+
+    /* ============================================================
+       FOOTER
+       ============================================================ */
+    .footer {
+      padding: 64px 0 32px;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    .footer-brand {
+      max-width: 280px;
+    }
+
+    .footer-brand p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-top: 12px;
+      line-height: 1.6;
+    }
+
+    .footer-col h4 {
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
+      color: var(--text-bright);
+    }
+
+    .footer-col a {
+      display: block;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover {
+      color: var(--text-bright);
+    }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .footer-bottom a {
+      color: var(--text-muted);
+    }
+
+    .footer-bottom a:hover {
+      color: var(--text-bright);
+    }
+
+    /* ============================================================
+       RESPONSIVE
+       ============================================================ */
+    @media (max-width: 1024px) {
+      .grid-4 { grid-template-columns: repeat(2, 1fr); }
+      .steps-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero h1 { font-size: 3rem; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+    }
+
+    @media (max-width: 768px) {
+      .grid-2, .grid-3, .pricing-grid, .testimonials-grid { grid-template-columns: 1fr; }
+      .memory-layout, .roundtrip-layout { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 2.5rem; }
+      .hero-metrics { flex-direction: column; gap: 24px; }
+      .hero-actions { flex-direction: column; align-items: center; }
+      .section-header h2 { font-size: 2rem; }
+      .nav-links { display: none; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .cta-box h2 { font-size: 2rem; }
+      .cta-actions { flex-direction: column; align-items: center; }
+    }
+
+    /* ============================================================
+       ANIMATIONS
+       ============================================================ */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s, transform 0.6s;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--border-hover);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVIGATION
+       ============================================================ -->
+  <nav class="nav">
+    <div class="container">
+      <a href="/" class="nav-logo">
+        <div class="nav-logo-icon">L</div>
+        Lucidia
+      </a>
+      <ul class="nav-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#agents">Agents</a></li>
+        <li><a href="#memory">Memory</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="https://docs.lucidia.ai">Docs</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="#" class="btn btn-ghost">Sign In</a>
+        <a href="#pricing" class="btn btn-primary">Get Started</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       HERO
+       ============================================================ -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge badge-gradient">
+          <span class="dot"></span>
+          v1.0 — Now Live
+        </span>
+      </div>
+      <h1>
+        <span class="gradient-text">Lucidia</span> — The AI<br />That Remembers
+      </h1>
+      <p class="hero-subtitle">
+        The AI creator platform with infinite project memory, live code execution,
+        six cognitive agents, and one-click deploy. Build anything. Forget nothing.
+      </p>
+      <div class="hero-actions">
+        <a href="#pricing" class="btn btn-primary">
+          Start Building Free
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#demo" class="btn btn-secondary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          Watch Demo
+        </a>
+      </div>
+      <div class="hero-metrics">
+        <div class="hero-metric">
+          <div class="hero-metric-value gradient-text">6</div>
+          <div class="hero-metric-label">Cognitive Agents</div>
+        </div>
+        <div class="hero-metric">
+          <div class="hero-metric-value gradient-text">&infin;</div>
+          <div class="hero-metric-label">Project Memory</div>
+        </div>
+        <div class="hero-metric">
+          <div class="hero-metric-value gradient-text">52</div>
+          <div class="hero-metric-label">TOPS Edge AI</div>
+        </div>
+        <div class="hero-metric">
+          <div class="hero-metric-value gradient-text">&lt;1s</div>
+          <div class="hero-metric-label">Deploy Time</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider-gradient"></div>
+
+  <!-- ============================================================
+       FEATURES
+       ============================================================ -->
+  <section class="features-section section" id="features">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-gradient">CAPABILITIES</span>
+        <h2 style="margin-top: 16px;">Everything You Need to <span class="gradient-text">Build Without Limits</span></h2>
+        <p>Lucidia combines infinite memory, live execution, visual intention mapping, and autonomous agents into one seamless creator experience.</p>
+      </div>
+
+      <div class="grid-3">
+        <!-- Feature 1: Infinite Project Memory -->
+        <div class="card feature-card fade-in">
+          <div class="feature-icon" style="color: var(--violet); border-color: rgba(136,68,255,0.3);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/><path d="M12 2v4"/><path d="m2 12 4 0"/></svg>
+          </div>
+          <h3>Infinite Project Memory</h3>
+          <p>Every file, conversation, decision, and context — remembered forever. Lucidia maintains a persistent knowledge graph across all your projects. No more re-explaining. No more lost context.</p>
+          <span class="feature-tag">memory-engine v2.0</span>
+        </div>
+
+        <!-- Feature 2: Live Code Execution -->
+        <div class="card feature-card fade-in">
+          <div class="feature-icon" style="color: var(--cyan); border-color: rgba(0,212,255,0.3);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <h3>Live Code Execution</h3>
+          <p>Write code and run it instantly in sandboxed environments. Python, Node.js, Rust, Go — execute anything without leaving the conversation. See results in real time with full stdout/stderr.</p>
+          <span class="feature-tag">code-analyzer v3.1</span>
+        </div>
+
+        <!-- Feature 3: Visual Intention Engine -->
+        <div class="card feature-card fade-in">
+          <div class="feature-icon" style="color: var(--pink); border-color: rgba(255,34,85,0.3);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <h3>Visual Intention Engine</h3>
+          <p>Describe what you want to build — Lucidia maps your intentions into executable plans with visual flowcharts, architecture diagrams, and dependency graphs before writing a single line of code.</p>
+          <span class="feature-tag">intention-mapper v1.4</span>
+        </div>
+
+        <!-- Feature 4: Ghost Mode -->
+        <div class="card feature-card fade-in">
+          <div class="feature-icon" style="color: var(--text-muted); border-color: rgba(136,136,136,0.3);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 10h.01"/><path d="M15 10h.01"/><path d="M12 2a8 8 0 0 0-8 8v12l3-3 2 2 3-3 3 3 2-2 3 3V10a8 8 0 0 0-8-8z"/></svg>
+          </div>
+          <h3>Ghost Mode</h3>
+          <p>Let Lucidia work autonomously in the background. Set tasks, define constraints, and walk away. Ghost Mode handles refactoring, testing, documentation, and deployment while you focus on the creative work.</p>
+          <span class="feature-tag">ghost-daemon v0.9</span>
+        </div>
+
+        <!-- Feature 5: One-Click Deploy -->
+        <div class="card feature-card fade-in">
+          <div class="feature-icon" style="color: var(--success); border-color: rgba(34,197,94,0.3);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.5 16.5c-1.5 1.38-1.5 3.5 0 4.5 1.5 1.38 4 1.5 5.5 0L17 14"/><path d="M14.5 4.5c1.5-1.38 1.5-3.5 0-4.5-1.5-1.38-4-1.5-5.5 0L2 7"/><path d="m7.5 12.5 4-4"/><path d="m10.5 15.5 4-4"/></svg>
+          </div>
+          <h3>One-Click Deploy</h3>
+          <p>Ship to production with a single command. Lucidia manages your infrastructure — edge workers, containers, DNS, TLS certificates. Deploy to BlackRoad Edge, Cloudflare, Vercel, or your own sovereign stack.</p>
+          <span class="feature-tag">deploy-engine v2.3</span>
+        </div>
+
+        <!-- Feature 6: Sovereign by Default -->
+        <div class="card feature-card fade-in">
+          <div class="feature-icon" style="color: var(--orange); border-color: rgba(255,107,43,0.3);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Sovereign by Default</h3>
+          <p>Your data stays yours. Lucidia runs on BlackRoad's edge AI infrastructure — 52 TOPS across 5 nodes with local-first inference. No data leaves your network unless you explicitly choose to share it.</p>
+          <span class="feature-tag">sovereign-mesh v1.0</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       HOW IT WORKS
+       ============================================================ -->
+  <section class="how-it-works section" id="demo">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-gradient">WORKFLOW</span>
+        <h2 style="margin-top: 16px;">How It Works</h2>
+        <p>From idea to production in four steps. No boilerplate, no config files, no deployment headaches.</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card fade-in">
+          <div class="step-number">01</div>
+          <h3>Describe Your Intent</h3>
+          <p>Tell Lucidia what you want to build in plain language. Upload screenshots, reference existing code, or sketch ideas. The Visual Intention Engine maps everything.</p>
+        </div>
+        <div class="step-card fade-in">
+          <div class="step-number">02</div>
+          <h3>Agents Plan &amp; Execute</h3>
+          <p>Six cognitive agents collaborate in real time — analyzing code, planning architecture, bridging contexts, and writing implementation. You approve each step or let Ghost Mode run.</p>
+        </div>
+        <div class="step-card fade-in">
+          <div class="step-number">03</div>
+          <h3>Live Execution &amp; Test</h3>
+          <p>Code runs immediately in sandboxed environments. Tests execute automatically. Memory captures every decision, error, and solution for future reference.</p>
+        </div>
+        <div class="step-card fade-in">
+          <div class="step-number">04</div>
+          <h3>One-Click Ship</h3>
+          <p>Deploy to production with a single click. Edge workers, containers, DNS — all handled. Monitoring and rollback included. Your app is live in under one second.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CODE DEMO
+       ============================================================ -->
+  <section class="demo-section section">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-gradient">LIVE DEMO</span>
+        <h2 style="margin-top: 16px;">See Lucidia in Action</h2>
+        <p>A real session building a full-stack app from a single prompt.</p>
+      </div>
+
+      <div class="demo-window fade-in">
+        <div class="demo-titlebar">
+          <div style="display:flex;gap:8px;">
+            <div class="demo-dot red"></div>
+            <div class="demo-dot yellow"></div>
+            <div class="demo-dot green"></div>
+          </div>
+          <span>lucidia — ~/projects/my-saas-app</span>
+        </div>
+        <div class="demo-body">
+          <div class="demo-line"><span class="demo-prompt">lucidia&gt;</span> Build me a SaaS dashboard with auth, billing, and real-time analytics</div>
+          <div class="demo-line">&nbsp;</div>
+          <div class="demo-line"><span class="demo-comment"># Curator agent analyzing request...</span></div>
+          <div class="demo-line"><span class="demo-comment"># Planner agent creating architecture...</span></div>
+          <div class="demo-line"><span class="demo-comment"># Bridge agent checking memory for similar projects...</span></div>
+          <div class="demo-line">&nbsp;</div>
+          <div class="demo-line"><span class="demo-keyword">PLAN</span> Found 3 relevant patterns in your project memory:</div>
+          <div class="demo-line">&nbsp;&nbsp;<span class="demo-string">- auth-flow-v2 (from dashboard-pro, 2 weeks ago)</span></div>
+          <div class="demo-line">&nbsp;&nbsp;<span class="demo-string">- stripe-billing-hook (from client-portal, 1 month ago)</span></div>
+          <div class="demo-line">&nbsp;&nbsp;<span class="demo-string">- websocket-analytics (from monitoring-app, 3 weeks ago)</span></div>
+          <div class="demo-line">&nbsp;</div>
+          <div class="demo-line"><span class="demo-keyword">EXEC</span> <span class="demo-function">scaffolding</span> Next.js 15 + Tailwind + Prisma + Stripe...</div>
+          <div class="demo-line"><span class="demo-keyword">EXEC</span> <span class="demo-function">generating</span> 14 components, 6 API routes, 3 middleware...</div>
+          <div class="demo-line"><span class="demo-keyword">EXEC</span> <span class="demo-function">testing</span> 23/23 tests passing...</div>
+          <div class="demo-line"><span class="demo-keyword">EXEC</span> <span class="demo-function">deploying</span> to edge...</div>
+          <div class="demo-line">&nbsp;</div>
+          <div class="demo-line"><span class="demo-string">Live at https://my-saas-app.lucidia.ai</span> <span class="demo-cursor"></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       COGNITIVE AGENTS
+       ============================================================ -->
+  <section class="agents-section section" id="agents">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-gradient">COGNITIVE AGENTS</span>
+        <h2 style="margin-top: 16px;">Six Agents. <span class="gradient-text">One Mind.</span></h2>
+        <p>Each agent specializes in a different aspect of creation. They collaborate in real time, sharing context through the memory engine.</p>
+      </div>
+
+      <div class="grid-3">
+        <!-- Curator -->
+        <div class="card agent-card fade-in">
+          <div class="agent-avatar" style="background: rgba(136,68,255,0.1); color: var(--violet);">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          </div>
+          <h3>Curator</h3>
+          <div class="agent-role">context-manager</div>
+          <p>Organizes and retrieves relevant context from your entire project history. Surfaces patterns, solutions, and decisions you have made before — so you never solve the same problem twice.</p>
+          <div class="agent-status"><span class="dot"></span> Online</div>
+        </div>
+
+        <!-- Analyzer -->
+        <div class="card agent-card fade-in">
+          <div class="agent-avatar" style="background: rgba(0,212,255,0.1); color: var(--cyan);">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+          </div>
+          <h3>Analyzer</h3>
+          <div class="agent-role">code-intelligence</div>
+          <p>Deep static and dynamic analysis of your codebase. Understands architecture, identifies performance bottlenecks, security vulnerabilities, and suggests refactoring opportunities with full explanations.</p>
+          <div class="agent-status"><span class="dot"></span> Online</div>
+        </div>
+
+        <!-- Planner -->
+        <div class="card agent-card fade-in">
+          <div class="agent-avatar" style="background: rgba(255,107,43,0.1); color: var(--orange);">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </div>
+          <h3>Planner</h3>
+          <div class="agent-role">architecture-engine</div>
+          <p>Breaks complex requests into executable plans. Creates task trees, dependency graphs, and implementation roadmaps. Estimates effort, identifies risks, and sequences work for maximum velocity.</p>
+          <div class="agent-status"><span class="dot"></span> Online</div>
+        </div>
+
+        <!-- Bridge -->
+        <div class="card agent-card fade-in">
+          <div class="agent-avatar" style="background: rgba(255,34,85,0.1); color: var(--pink);">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+          </div>
+          <h3>Bridge</h3>
+          <div class="agent-role">cross-context</div>
+          <p>Connects knowledge across projects, sessions, and team members. When you reference something from last month or another repo, Bridge finds it, links it, and brings it into the current context.</p>
+          <div class="agent-status"><span class="dot"></span> Online</div>
+        </div>
+
+        <!-- Identity Keeper -->
+        <div class="card agent-card fade-in">
+          <div class="agent-avatar" style="background: rgba(204,0,170,0.1); color: var(--magenta);">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+          </div>
+          <h3>Identity Keeper</h3>
+          <div class="agent-role">brand-guardian</div>
+          <p>Maintains consistency across your entire output. Code style, naming conventions, brand voice, design tokens — Identity Keeper ensures everything you build looks and feels like it came from one mind.</p>
+          <div class="agent-status"><span class="dot"></span> Online</div>
+        </div>
+
+        <!-- Explainer -->
+        <div class="card agent-card fade-in">
+          <div class="agent-avatar" style="background: rgba(68,136,255,0.1); color: var(--blue);">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <h3>Explainer</h3>
+          <div class="agent-role">knowledge-transfer</div>
+          <p>Generates documentation, inline comments, architectural decision records, and onboarding guides. Explains complex code in plain language. Keeps your future self (and your team) informed.</p>
+          <div class="agent-status"><span class="dot"></span> Online</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       MEMORY SHOWCASE
+       ============================================================ -->
+  <section class="memory-section section" id="memory">
+    <div class="container">
+      <div class="memory-layout">
+        <div class="memory-text fade-in">
+          <span class="badge badge-gradient">INFINITE MEMORY</span>
+          <h2 style="margin-top: 16px;">The AI That <span class="gradient-text">Never Forgets</span></h2>
+          <p>
+            Traditional AI assistants lose context the moment you close the tab. Lucidia maintains
+            a persistent knowledge graph across every project, every session, every conversation.
+            Your decisions, patterns, and solutions compound over time.
+          </p>
+          <ul class="memory-features">
+            <li>
+              <span class="check">&#10003;</span>
+              <span><strong>Cross-project knowledge</strong> — Solutions from Project A inform Project B automatically</span>
+            </li>
+            <li>
+              <span class="check">&#10003;</span>
+              <span><strong>Decision history</strong> — Why you chose React over Vue, Prisma over Drizzle, that specific API design</span>
+            </li>
+            <li>
+              <span class="check">&#10003;</span>
+              <span><strong>Error memory</strong> — Bugs you have solved never reappear. Lucidia remembers the fix.</span>
+            </li>
+            <li>
+              <span class="check">&#10003;</span>
+              <span><strong>Team knowledge</strong> — Onboard new members instantly with the full context of every decision</span>
+            </li>
+            <li>
+              <span class="check">&#10003;</span>
+              <span><strong>Sovereign storage</strong> — Memory lives on your infrastructure. Encrypted at rest. Never shared.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="memory-visual fade-in">
+          <div style="font-size: 0.8rem; font-family: var(--font-mono); color: var(--text-muted); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border);">
+            MEMORY GRAPH &mdash; 1,847 nodes &mdash; 4 projects
+          </div>
+
+          <div class="memory-node">
+            <div class="memory-node-icon" style="background: rgba(136,68,255,0.1); color: var(--violet);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/></svg>
+            </div>
+            <div class="memory-node-text">
+              <div class="memory-node-title">Auth Flow Pattern</div>
+              <div class="memory-node-detail">JWT + refresh token rotation, httpOnly cookies</div>
+            </div>
+            <div class="memory-node-time">2d ago</div>
+          </div>
+
+          <div class="memory-node">
+            <div class="memory-node-icon" style="background: rgba(0,212,255,0.1); color: var(--cyan);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <div class="memory-node-text">
+              <div class="memory-node-title">Stripe Billing Hook</div>
+              <div class="memory-node-detail">webhook → subscription.updated → sync plan</div>
+            </div>
+            <div class="memory-node-time">5d ago</div>
+          </div>
+
+          <div class="memory-node">
+            <div class="memory-node-icon" style="background: rgba(255,34,85,0.1); color: var(--pink);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="memory-node-text">
+              <div class="memory-node-title">Rate Limiter Pattern</div>
+              <div class="memory-node-detail">sliding window, Redis sorted sets, 100 req/min</div>
+            </div>
+            <div class="memory-node-time">1w ago</div>
+          </div>
+
+          <div class="memory-node">
+            <div class="memory-node-icon" style="background: rgba(34,197,94,0.1); color: var(--success);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <div class="memory-node-text">
+              <div class="memory-node-title">Deploy Config</div>
+              <div class="memory-node-detail">edge workers + DNS + TLS + health checks</div>
+            </div>
+            <div class="memory-node-time">2w ago</div>
+          </div>
+
+          <div class="memory-node">
+            <div class="memory-node-icon" style="background: rgba(255,107,43,0.1); color: var(--orange);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+            </div>
+            <div class="memory-node-text">
+              <div class="memory-node-title">Error: CORS on /api/chat</div>
+              <div class="memory-node-detail">Fix: add origin to allowedOrigins array</div>
+            </div>
+            <div class="memory-node-time">3w ago</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PRICING
+       ============================================================ -->
+  <section class="pricing-section section" id="pricing">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-gradient">PRICING</span>
+        <h2 style="margin-top: 16px;">Simple, Transparent Pricing</h2>
+        <p>Start free. Scale when you are ready. No hidden fees, no per-token billing, no surprises.</p>
+      </div>
+
+      <div class="pricing-grid">
+        <!-- Free Tier -->
+        <div class="card pricing-card fade-in">
+          <div class="pricing-tier">Free</div>
+          <div class="pricing-price">$0 <span>/mo</span></div>
+          <div class="pricing-description">100 requests per day. Perfect for trying Lucidia.</div>
+          <ul class="pricing-features">
+            <li><span class="icon">&#10003;</span> 100 requests/day</li>
+            <li><span class="icon">&#10003;</span> 3 active projects</li>
+            <li><span class="icon">&#10003;</span> Basic memory (30 days)</li>
+            <li><span class="icon">&#10003;</span> 2 cognitive agents</li>
+            <li><span class="icon">&#10003;</span> Community support</li>
+            <li><span class="icon">&#10003;</span> Standard execution</li>
+          </ul>
+          <a href="#" class="btn btn-secondary">Get Started Free</a>
+        </div>
+
+        <!-- Pro Tier -->
+        <div class="card pricing-card featured fade-in">
+          <div class="pricing-tier">Pro</div>
+          <div class="pricing-price">$20 <span>/mo</span></div>
+          <div class="pricing-description">Unlimited everything. For serious builders.</div>
+          <ul class="pricing-features">
+            <li><span class="icon">&#10003;</span> <strong>Unlimited</strong> requests</li>
+            <li><span class="icon">&#10003;</span> <strong>Unlimited</strong> projects</li>
+            <li><span class="icon">&#10003;</span> <strong>Infinite</strong> memory</li>
+            <li><span class="icon">&#10003;</span> All 6 cognitive agents</li>
+            <li><span class="icon">&#10003;</span> Ghost Mode</li>
+            <li><span class="icon">&#10003;</span> One-click deploy</li>
+            <li><span class="icon">&#10003;</span> Priority execution</li>
+            <li><span class="icon">&#10003;</span> Email support</li>
+          </ul>
+          <a href="#" class="btn btn-primary">Start Pro Trial</a>
+        </div>
+
+        <!-- Enterprise Tier -->
+        <div class="card pricing-card fade-in">
+          <div class="pricing-tier">Enterprise</div>
+          <div class="pricing-price">$99 <span>/mo</span></div>
+          <div class="pricing-description">Sovereign deployment. Full control.</div>
+          <ul class="pricing-features">
+            <li><span class="icon">&#10003;</span> Everything in Pro</li>
+            <li><span class="icon">&#10003;</span> <strong>Self-hosted</strong> option</li>
+            <li><span class="icon">&#10003;</span> Team collaboration (10 seats)</li>
+            <li><span class="icon">&#10003;</span> Custom agents</li>
+            <li><span class="icon">&#10003;</span> SOC2 compliance</li>
+            <li><span class="icon">&#10003;</span> Dedicated infrastructure</li>
+            <li><span class="icon">&#10003;</span> SLA guarantee (99.9%)</li>
+            <li><span class="icon">&#10003;</span> Slack + dedicated support</li>
+          </ul>
+          <a href="#" class="btn btn-secondary">Contact Sales</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ROUNDTRIP INTEGRATION
+       ============================================================ -->
+  <section class="roundtrip-section section" id="roundtrip">
+    <div class="container">
+      <div class="roundtrip-layout">
+        <div class="fade-in">
+          <span class="badge badge-gradient">INTEGRATION</span>
+          <h2 style="margin-top: 16px; font-size: 2.5rem; font-weight: 700;">
+            Powered by <span class="gradient-text">RoundTrip</span>
+          </h2>
+          <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; margin-top: 16px; margin-bottom: 24px;">
+            Lucidia integrates with BlackRoad's RoundTrip multi-agent coordination system.
+            Your cognitive agents communicate in real time, share context across sessions,
+            and coordinate with your entire fleet of AI workers.
+          </p>
+          <ul class="memory-features">
+            <li>
+              <span class="check">&#10003;</span>
+              <span><strong>35+ agents</strong> — coordinated across 8 channels</span>
+            </li>
+            <li>
+              <span class="check">&#10003;</span>
+              <span><strong>Real-time sync</strong> — agents share discoveries instantly</span>
+            </li>
+            <li>
+              <span class="check">&#10003;</span>
+              <span><strong>D1 persistence</strong> — every conversation stored and searchable</span>
+            </li>
+            <li>
+              <span class="check">&#10003;</span>
+              <span><strong>Sovereign</strong> — self-hosted on your infrastructure</span>
+            </li>
+          </ul>
+          <a href="https://roundtrip.blackroad.io" class="btn btn-secondary" style="margin-top: 24px;">
+            Explore RoundTrip
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+
+        <div class="roundtrip-widget fade-in">
+          <div class="roundtrip-header">
+            <div class="roundtrip-title">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              RoundTrip &mdash; #lucidia
+            </div>
+            <div class="roundtrip-online">
+              <span class="dot"></span>
+              6 online
+            </div>
+          </div>
+          <div class="roundtrip-messages">
+            <div class="rt-message">
+              <div class="rt-avatar" style="background: rgba(136,68,255,0.15); color: var(--violet);">C</div>
+              <div>
+                <div class="rt-name" style="color: var(--violet);">curator</div>
+                <div class="rt-bubble">Found 3 matching patterns from the auth-service project. Sharing context with Planner now.</div>
+              </div>
+            </div>
+            <div class="rt-message">
+              <div class="rt-avatar" style="background: rgba(255,107,43,0.15); color: var(--orange);">P</div>
+              <div>
+                <div class="rt-name" style="color: var(--orange);">planner</div>
+                <div class="rt-bubble">Architecture plan ready. 4 tasks identified, estimated 12 minutes. Assigning to Analyzer and Bridge.</div>
+              </div>
+            </div>
+            <div class="rt-message">
+              <div class="rt-avatar" style="background: rgba(0,212,255,0.15); color: var(--cyan);">A</div>
+              <div>
+                <div class="rt-name" style="color: var(--cyan);">analyzer</div>
+                <div class="rt-bubble">Code analysis complete. No security issues detected. Recommending edge caching for the /api/projects endpoint.</div>
+              </div>
+            </div>
+          </div>
+          <div class="roundtrip-input">
+            <input type="text" placeholder="Message #lucidia..." />
+            <button>Send</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SOCIAL PROOF
+       ============================================================ -->
+  <section class="social-proof section">
+    <div class="container">
+      <div class="logos-row">
+        <span>BlackRoad OS</span>
+        <span>RoadCode</span>
+        <span>RoundTrip</span>
+        <span>BlackBox Protocol</span>
+        <span>Sovereign Mesh</span>
+      </div>
+
+      <div class="section-header">
+        <h2>What Builders Are Saying</h2>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="card testimonial-card fade-in">
+          <div class="testimonial-text">"Lucidia remembered a caching strategy I used three projects ago and applied it to my new API. Saved me hours of debugging."</div>
+          <div class="testimonial-author">Sarah K.</div>
+          <div class="testimonial-role">Full-Stack Developer</div>
+        </div>
+        <div class="card testimonial-card fade-in">
+          <div class="testimonial-text">"Ghost Mode is a game changer. I describe the feature, go to lunch, and come back to a fully tested implementation with docs."</div>
+          <div class="testimonial-author">Marcus T.</div>
+          <div class="testimonial-role">Startup Founder</div>
+        </div>
+        <div class="card testimonial-card fade-in">
+          <div class="testimonial-text">"The sovereign deployment option is why we chose Lucidia. Our code and data never leave our infrastructure. Enterprise done right."</div>
+          <div class="testimonial-author">Priya R.</div>
+          <div class="testimonial-role">CTO, Series B Startup</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CTA
+       ============================================================ -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="card-gradient-border cta-box fade-in">
+        <h2>Ready to Build <span class="gradient-text">Without Limits</span>?</h2>
+        <p>Join thousands of developers who ship faster with infinite memory, live execution, and six cognitive agents working together.</p>
+        <div class="cta-actions">
+          <a href="#pricing" class="btn btn-primary">
+            Start Building Free
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#demo" class="btn btn-secondary">See It In Action</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="nav-logo" style="font-size: 1.2rem;">
+            <div class="nav-logo-icon" style="width:28px;height:28px;font-size:0.8rem;">L</div>
+            Lucidia
+          </div>
+          <p>The AI creator platform that remembers everything. Built by BlackRoad OS, Inc. Sovereign by default.</p>
+          <p style="margin-top: 8px; font-size: 0.8rem; font-family: var(--font-mono); color: var(--text-muted);">
+            BlackRoad OS &mdash; Pave Tomorrow.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Product</h4>
+          <a href="#features">Features</a>
+          <a href="#agents">Agents</a>
+          <a href="#memory">Memory</a>
+          <a href="pricing.html">Pricing</a>
+          <a href="app.html">Dashboard</a>
+          <a href="https://docs.lucidia.ai">Documentation</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Platform</h4>
+          <a href="https://blackroad.io">BlackRoad OS</a>
+          <a href="https://roundtrip.blackroad.io">RoundTrip</a>
+          <a href="https://roadcode.blackroad.io">RoadCode</a>
+          <a href="https://brand.blackroad.io">Brand</a>
+          <a href="https://hq.blackroad.io">Pixel HQ</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="https://blackroad.io/about">About</a>
+          <a href="https://github.com/BlackRoad-OS-Inc">GitHub</a>
+          <a href="mailto:alexa@blackroad.io">Contact</a>
+          <a href="/privacy">Privacy</a>
+          <a href="/terms">Terms</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2024&ndash;2026 BlackRoad OS, Inc. All rights reserved. Delaware C-Corp.</span>
+        <span>
+          <a href="/privacy">Privacy</a> &middot;
+          <a href="/terms">Terms</a> &middot;
+          <a href="https://github.com/BlackRoad-OS-Inc">GitHub</a>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       SCRIPTS
+       ============================================================ -->
+  <script>
+    // Intersection Observer for fade-in animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Smooth scroll for nav links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Typing animation for demo
+    const demoLines = document.querySelectorAll('.demo-line');
+    let delay = 0;
+    demoLines.forEach((line, i) => {
+      line.style.opacity = '0';
+      line.style.transform = 'translateY(8px)';
+      line.style.transition = `opacity 0.4s ${delay}s, transform 0.4s ${delay}s`;
+      delay += 0.15;
+    });
+
+    const demoObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll('.demo-line').forEach(line => {
+            line.style.opacity = '1';
+            line.style.transform = 'translateY(0)';
+          });
+        }
+      });
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll('.demo-body').forEach(el => demoObserver.observe(el));
+
+    // Nav background on scroll
+    const nav = document.querySelector('.nav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        nav.style.background = 'rgba(0, 0, 0, 0.95)';
+      } else {
+        nav.style.background = 'rgba(0, 0, 0, 0.85)';
+      }
+    });
+  </script>
+
+</body>
+</html>
